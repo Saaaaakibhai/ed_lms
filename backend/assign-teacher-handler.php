@@ -1,5 +1,5 @@
 <?php
-include '../backend/db.php';
+include 'db.php';
 
 if (isset($_POST['course_id']) && isset($_POST['user_id'])) {
     $course_id = $_POST['course_id'];

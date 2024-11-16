@@ -1,5 +1,5 @@
 <?php
-include '../backend/db.php'; // Adjust the path to your database connection file
+include 'db.php'; // Adjust the path to your database connection file
 
 // Check if user_id and role are set in the URL
 if (isset($_GET['user_id']) && isset($_GET['role'])) {

@@ -39,16 +39,20 @@ session_start(); // Start the session to access session variables
                                 $stmt->execute(['user_id' => $user_id]);
 
                                 // Check if courses are found and display them
-                                while ($course = $stmt->fetch()) {
-                                    echo "<div class='col-md-4 mb-4'>
-                                            <div class='card border-primary'>
-                                                <div class='card-body'>
-                                                    <h5 class='card-title'>" . htmlspecialchars($course['Title']) . "</h5>
-                                                    <p class='card-text'>" . htmlspecialchars($course['Start_date']) . "</p>
-                                                    <a href='teacher-course.php' class='btn btn-primary'>View Details</a>
+                                if ($stmt->rowCount() > 0) {
+                                    while ($course = $stmt->fetch()) {
+                                        echo "<div class='col-md-4 mb-4'>
+                                                <div class='card border-primary'>
+                                                    <div class='card-body'>
+                                                        <h5 class='card-title'>" . htmlspecialchars($course['Title']) . "</h5>
+                                                        <p class='card-text'>" . htmlspecialchars($course['Start_date']) . "</p>
+                                                        <a href='teacher-course.php' class='btn btn-primary'>View Details</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                          </div>";
+                                              </div>";
+                                    }
+                                } else {
+                                    echo "<p>No courses found for this teacher.</p>";
                                 }
                             } else {
                                 echo "<p>Please log in to view your courses.</p>";
