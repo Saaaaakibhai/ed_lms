@@ -13,6 +13,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <li class="nav-item">
                 <a class="nav-link <?php echo $currentPage == 'blog-index.php' ? 'active' : ''; ?> sidebar-link" href="blog-index.php">Blogs</a>
             </li>
+
         </ul>
     </div>
 </aside>

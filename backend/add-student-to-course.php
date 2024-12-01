@@ -1,11 +1,11 @@
 <?php
-include 'db.php';
+include 'db.php'; // Database connection
 
 if (isset($_POST['user_id']) && isset($_POST['course_id'])) {
     $user_id = $_POST['user_id'];
     $course_id = $_POST['course_id'];
 
-    // Check if the course with the given course_id exists (correct column name is Id)
+    // Validate if course exists
     $sql = "SELECT COUNT(*) FROM course WHERE Id = :course_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['course_id' => $course_id]);
@@ -16,17 +16,24 @@ if (isset($_POST['user_id']) && isset($_POST['course_id'])) {
         exit();
     }
 
-    // Insert student into the course
-    $sql = "INSERT INTO teachers (user_id, course_id) VALUES (:user_id, :course_id)
-            ON DUPLICATE KEY UPDATE user_id = :user_id";
+    // Check if student is already enrolled
+    $sql = "SELECT COUNT(*) FROM students WHERE user_id = :user_id AND course_id = :course_id";
     $stmt = $pdo->prepare($sql);
+    $stmt->execute(['user_id' => $user_id, 'course_id' => $course_id]);
+    $already_enrolled = $stmt->fetchColumn();
 
-    if ($stmt->execute(['user_id' => $user_id, 'course_id' => $course_id])) {
-        header("Location: ../frontend/teacher-course.php?course_id=$course_id&success=1");
-    } else {
-        echo "Failed to add student to course.";
+    if ($already_enrolled) {
+        echo "Student is already enrolled in this course.";
+        exit();
     }
-    exit();
+
+    // Enroll the student in the course
+    $sql = "INSERT INTO students (user_id, course_id) VALUES (:user_id, :course_id)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['user_id' => $user_id, 'course_id' => $course_id]);
+
+    echo "Student added successfully!";
 } else {
-    echo "Invalid input.";
+    echo "Invalid request.";
 }
+?>
