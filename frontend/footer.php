@@ -1,4 +1,5 @@
 <footer class="bg-custom-f text-white pt-5 pb-4">
+
     <div class="container text-center text-md-left">
         <div class="row text-center text-md-left">
             <!-- About Section -->
@@ -25,7 +26,6 @@
                 <p><i class="fa fa-home mr-3"></i> Banani, Dhaka-1213, Bangladesh</p>
                 <p><i class="fa fa-envelope mr-3"></i> edlms@gmail.com</p>
                 <p><i class="fa fa-phone mr-3"></i> +880 019 7130 6441</p>
-
                 <p><i class="fa fa-print mr-3"></i> +880 017 7890 2448</p>
 
 
@@ -34,19 +34,12 @@
             <!-- Social Media Links -->
             <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Follow Us</h5>
-                <a href="#" class="text-white" style="text-decoration: none;">
-                    <i class="fa-brands fa-facebook-f fa-lg mr-4"></i>
-                </a>
-                <a href="#" class="text-white" style="text-decoration: none;">
-                    <i class="fa-brands fa-twitter fa-lg mr-4"></i>
-                </a>
-                <a href="#" class="text-white" style="text-decoration: none;">
-                    <i class="fa-brands fa-instagram fa-lg mr-4"></i>
-                </a>
-                <a href="#" class="text-white" style="text-decoration: none;">
-                    <i class="fa-brands fa-linkedin fa-lg"></i>
-                </a>
+                <a href="#" class="social-icon facebook"></a>
+                <a href="#" class="social-icon twitter"></a>
+                <a href="#" class="social-icon instagram"></a>
+                <a href="#" class="social-icon linkedin"></a>
             </div>
+
         </div>
 
         <!-- Horizontal Line -->
